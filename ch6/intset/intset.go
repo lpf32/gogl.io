@@ -3,6 +3,7 @@ package intset
 import (
 	"bytes"
 	"fmt"
+	"strings"
 )
 
 type IntSet struct {
@@ -52,4 +53,36 @@ func (s *IntSet) String() string  {
 	}
 	buf.WriteByte('}')
 	return buf.String()
+}
+
+// return the number of elements
+func (s *IntSet) Len() int {
+	return len(strings.Split(s.String(), " "))
+}
+
+// remove x from the set
+func (s *IntSet) Remove(x int) {
+	word, bit := x/64, uint(x%64)
+	s.words[word] = s.words[word] ^ (1 << bit)
+}
+
+
+// remove all elements from the set
+func (s *IntSet) Clear(){
+	for i := range s.words {
+		s.words[i] = 0
+	}
+}
+
+// return a copy of the set
+func (s *IntSet) Copy() *IntSet {
+	is := IntSet{make([]uint64, len(s.words))}
+	copy(is.words, s.words)
+	return &is
+}
+
+func (s *IntSet) AddAll (nums ...int)  {
+	for _, x := range nums {
+		s.Add(x)
+	}
 }
