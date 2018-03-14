@@ -1,8 +1,8 @@
 package main
 
 import (
-	"awesomeProject/ch6/coloredpoint"
-	"awesomeProject/ch6/geometry"
+	"gopl.io/ch6/coloredpoint"
+	"gopl.io/ch6/geometry"
 	"fmt"
 	"image/color"
 )
@@ -17,8 +17,4 @@ func main()  {
 	q.ScaleBy(2)
 
 	fmt.Println(p.Distance(q.Point))
-
-	cache := geometry.NewCahce()
-
-	fmt.Println(cache)
 }
