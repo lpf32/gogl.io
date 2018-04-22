@@ -1,11 +1,11 @@
 package github
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
 	"net/url"
 	"strings"
-	"net/http"
-	"encoding/json"
 )
 
 func SearchIssues(terms []string) (*IssuesSearchResult, error) {
@@ -29,5 +29,3 @@ func SearchIssues(terms []string) (*IssuesSearchResult, error) {
 	resp.Body.Close()
 	return &result, nil
 }
-
-

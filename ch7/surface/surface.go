@@ -1,11 +1,11 @@
 package main
 
 import (
-	"gopl.io/ch7/eval"
 	"fmt"
-	"math"
+	"gopl.io/ch7/eval"
 	"io"
 	"log"
+	"math"
 	"net/http"
 )
 
@@ -49,7 +49,7 @@ func surface(w io.Writer, f func(x, y float64) float64) {
 	fmt.Fprintln(w, "</svg>")
 }
 
-func parseAndCheck(s string) (eval.Expr, error)  {
+func parseAndCheck(s string) (eval.Expr, error) {
 	if s == "" {
 		return nil, fmt.Errorf("empty expression")
 	}

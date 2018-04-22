@@ -6,7 +6,7 @@ func getError() ([]string, error) {
 	return nil, fmt.Errorf("test error")
 }
 
-func main()  {
+func main() {
 	_, err := getError()
 
 	if err != nil {

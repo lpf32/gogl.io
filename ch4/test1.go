@@ -10,7 +10,7 @@ var res string
 func match(a []string, b []string) int {
 	bLen := len(b)
 
-	for i:=0; i < bLen; i++ {
+	for i := 0; i < bLen; i++ {
 		if a[i] != b[i] {
 			return i
 		}
@@ -18,10 +18,9 @@ func match(a []string, b []string) int {
 	return 0
 }
 
-func main()  {
+func main() {
 	a := "/a/b/c.txt"
 	b := "/a/x/c/d.txt"
-
 
 	aA := strings.Split(a, "/")
 	bA := strings.Split(b, "/")

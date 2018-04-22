@@ -1,12 +1,11 @@
 package main
 
-
 type tree struct {
-	value int
+	value       int
 	left, right *tree
 }
 
-func Sort(values []int)  {
+func Sort(values []int) {
 	var root *tree
 	for _, v := range values {
 		root = add(root, v)
@@ -14,13 +13,13 @@ func Sort(values []int)  {
 	appendValues(values[:0], root)
 }
 
-func add(t *tree, value int) *tree  {
+func add(t *tree, value int) *tree {
 	if t == nil {
 		t = new(tree)
 		t.value = value
 		return t
 	}
-	
+
 	if value < t.value {
 		t.left = add(t.left, value)
 	} else {
@@ -38,7 +37,7 @@ func appendValues(values []int, t *tree) []int {
 	return values
 }
 
-func main()  {
-	values :=[3]int{3, 4, 5}
+func main() {
+	values := [3]int{3, 4, 5}
 	Sort(values[:])
 }

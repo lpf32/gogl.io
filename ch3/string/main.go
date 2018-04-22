@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 	"unicode/utf8"
-
 )
 
-func main()  {
+func main() {
 	s := "hello, 世界"
 
 	fmt.Println(len(s))

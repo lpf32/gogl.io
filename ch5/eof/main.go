@@ -2,12 +2,12 @@ package main
 
 import (
 	"bufio"
-	"os"
-	"io"
 	"fmt"
+	"io"
+	"os"
 )
 
-func main()  {
+func main() {
 	in := bufio.NewReader(os.Stdin)
 
 	for {

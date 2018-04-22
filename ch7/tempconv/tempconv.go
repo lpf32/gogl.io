@@ -1,12 +1,12 @@
 package tempconv
 
 import (
-	ch2temp "gopl.io/ch2/tempconv"
-	"fmt"
 	"flag"
+	"fmt"
+	ch2temp "gopl.io/ch2/tempconv"
 )
 
-type celsiusFlag struct { ch2temp.Celsius }
+type celsiusFlag struct{ ch2temp.Celsius }
 
 func (f *celsiusFlag) Set(s string) error {
 	var unit string
@@ -23,7 +23,6 @@ func (f *celsiusFlag) Set(s string) error {
 	}
 	return fmt.Errorf("invalid temperature %q", s)
 }
-
 
 func CelsiusFlag(name string, value ch2temp.Celsius, usage string) *ch2temp.Celsius {
 	f := celsiusFlag{value}

@@ -1,21 +1,21 @@
 package main
 
 import (
-	"net"
-	"log"
-	"io"
-	"os"
 	"fmt"
+	"io"
+	"log"
+	"net"
+	"os"
 	"strings"
 )
 
 type clockzone struct {
-	id int
+	id       int
 	location string
-	con net.Conn
+	con      net.Conn
 }
 
-func main()  {
+func main() {
 	for i, arg := range os.Args[1:] {
 		args := strings.Split(arg, "=")
 
@@ -28,7 +28,7 @@ func main()  {
 	}
 }
 
-func mustCopy(dst io.Writer, src io.Reader)  {
+func mustCopy(dst io.Writer, src io.Reader) {
 	if _, err := io.Copy(dst, src); err != nil {
 		log.Fatal(err)
 	}

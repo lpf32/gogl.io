@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
-	"path"
-	"os"
-	"io"
 	"fmt"
+	"io"
+	"net/http"
+	"os"
+	"path"
 )
 
 func fetch(url string) (filename string, n int64, err error) {
@@ -33,7 +33,7 @@ func fetch(url string) (filename string, n int64, err error) {
 	return local, n, err
 }
 
-func main()  {
+func main() {
 	for _, url := range os.Args[1:] {
 		local, n, err := fetch(url)
 		if err != nil {

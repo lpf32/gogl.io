@@ -7,7 +7,7 @@ import (
 type Celsius float64
 type Fahrenheit float64
 
-func main () {
+func main() {
 	var a Celsius = 1
 
 	fmt.Println(a.String())
@@ -17,5 +17,4 @@ func main () {
 	fmt.Println(float64(a))
 }
 
-
-func (c Celsius) String() string { return fmt.Sprintf("%g OC", c)}
+func (c Celsius) String() string { return fmt.Sprintf("%g OC", c) }

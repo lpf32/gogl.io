@@ -11,15 +11,15 @@ type literal float64
 
 type unary struct {
 	op rune // one of "+", "-"
-	x Expr
+	x  Expr
 }
 
 type binary struct {
-	op rune // one of "+", "-"
-	x,y Expr
+	op   rune // one of "+", "-"
+	x, y Expr
 }
 
 type call struct {
-	fn string
+	fn   string
 	args []Expr
 }

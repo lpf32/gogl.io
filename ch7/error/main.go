@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func main()  {
+func main() {
 	e := errors.New("errorss")
 
 	fmt.Println(e)

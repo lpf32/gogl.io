@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func main()  {
+func main() {
 	nan := math.NaN()
 
 	fmt.Println(math.IsNaN(nan))

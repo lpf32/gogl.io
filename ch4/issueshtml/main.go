@@ -1,10 +1,10 @@
 package main
 
 import (
-"html/template"
-"awesomeProject/ch4/github"
-"os"
-"log"
+	"awesomeProject/ch4/github"
+	"html/template"
+	"log"
+	"os"
 )
 
 var issueList = template.Must(template.New("issuelist").Parse(`
@@ -27,8 +27,7 @@ var issueList = template.Must(template.New("issuelist").Parse(`
 </table>
 `))
 
-
-func main()  {
+func main() {
 	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)

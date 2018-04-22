@@ -5,21 +5,21 @@ import (
 	"sort"
 )
 
-var prereqs = map[string][]string {
+var prereqs = map[string][]string{
 	"algorithms": {"data structures"},
-	"calculus": {"linear algebra"},
-	
+	"calculus":   {"linear algebra"},
+
 	"compilers": {
 		"data structures",
 		"formal languages",
 		"computer organization",
 	},
-	
+
 	"data structures": {"discrete math"},
-	"databases": {"data structures"},
+	"databases":       {"data structures"},
 }
 
-func main()  {
+func main() {
 	for i, course := range topoSort(prereqs) {
 		fmt.Printf("%d:\t%s\n", i+1, course)
 	}
@@ -47,5 +47,3 @@ func topoSort(m map[string][]string) []string {
 	sort.Strings(order)
 	return order
 }
-
-

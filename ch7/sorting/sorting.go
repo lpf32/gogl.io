@@ -1,22 +1,22 @@
 package sorting
 
 import (
-	"time"
-	"text/tabwriter"
-	"os"
 	"fmt"
+	"os"
 	"sort"
+	"text/tabwriter"
+	"time"
 )
 
 type Track struct {
-	Title string
+	Title  string
 	Artist string
-	Album string
-	Year int
+	Album  string
+	Year   int
 	Length time.Duration
 }
 
-var Tracks = []*Track {
+var Tracks = []*Track{
 	{"Go", "Delilah", "From the Roots Up", 2012, length("3m38s")},
 	{"Go", "Moby", "Moby", 1992, length("3m37s")},
 	{"Go Ahead", "Alicia Keys", "As I Am", 2007, length("4m36s")},
@@ -52,7 +52,7 @@ func (x ByArtish) Less(i, j int) bool {
 	return x[i].Artist < x[j].Artist
 }
 
-func (x ByArtish) Swap(i, j int)  {
+func (x ByArtish) Swap(i, j int) {
 	x[i], x[j] = x[j], x[i]
 }
 

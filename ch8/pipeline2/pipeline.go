@@ -5,13 +5,13 @@ import (
 	"time"
 )
 
-func main()  {
+func main() {
 	naturals := make(chan int)
 	squares := make(chan int)
 	wait := make(chan int)
 
 	go func() {
-		for x := 0; x < 4 ; x++ {
+		for x := 0; x < 4; x++ {
 			naturals <- x
 			time.Sleep(1 * time.Second)
 		}
@@ -20,7 +20,7 @@ func main()  {
 
 	go func() {
 		for {
-			x, ok := <- naturals
+			x, ok := <-naturals
 			if !ok {
 				break //
 			}
@@ -36,6 +36,6 @@ func main()  {
 		wait <- 1
 	}()
 
-	<- wait
+	<-wait
 
 }

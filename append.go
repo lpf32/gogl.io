@@ -19,7 +19,7 @@ func appendInt(x []int, y int) []int {
 	return z
 }
 
-func main()  {
+func main() {
 	var x, y []int
 	for i := 0; i < 10; i++ {
 		y = appendInt(x, i)

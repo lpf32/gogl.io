@@ -7,22 +7,19 @@ type Print interface {
 }
 
 type A struct {
-
 }
 
-func (a A) Print()  {
+func (a A) Print() {
 	fmt.Println("A")
 }
 
-
 type B struct {
-
 }
 
-func (b B) Print()  {
+func (b B) Print() {
 	fmt.Println("B")
 }
 
-func Hello(o Print)  {
+func Hello(o Print) {
 	o.Print()
 }

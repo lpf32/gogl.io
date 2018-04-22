@@ -1,14 +1,14 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
 	"golang.org/x/net/html"
-	"os"
 	"log"
+	"net/http"
+	"os"
 )
 
-func findLinks(url string) ([]string, error)  {
+func findLinks(url string) ([]string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -35,13 +35,13 @@ func visit(links []string, n *html.Node) []string {
 			}
 		}
 	}
-	for c := n.FirstChild; c != nil; c = c.NextSibling  {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		links = visit(links, c)
 	}
 	return links
 }
 
-func main()  {
+func main() {
 	for _, url := range os.Args[1:] {
 		links, err := findLinks(url)
 		if err != nil {

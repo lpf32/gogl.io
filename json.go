@@ -2,19 +2,19 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 	"fmt"
+	"log"
 )
 
-type Movie struct{
-	Title string
-	Year int `json:"realeased"`
-	Color bool `json:"color, omitempty"`
+type Movie struct {
+	Title  string
+	Year   int  `json:"realeased"`
+	Color  bool `json:"color, omitempty"`
 	Actors []string
 }
 
-func main()  {
-	var movies = []Movie {
+func main() {
+	var movies = []Movie{
 		{Title: "Casablance", Year: 1942, Color: false,
 			Actors: []string{"Humphrey Bogart", "Ingrid Bergman"}},
 		{Title: "Cool Hand Luke", Year: 1967, Color: true,
@@ -38,4 +38,3 @@ func main()  {
 	//fmt.Println(err)
 	fmt.Println(titles)
 }
-

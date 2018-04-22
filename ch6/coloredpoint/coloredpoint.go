@@ -1,8 +1,8 @@
 package coloredpoint
 
 import (
-	"image/color"
 	"gopl.io/ch6/geometry"
+	"image/color"
 )
 
 type ColoredPoint struct {

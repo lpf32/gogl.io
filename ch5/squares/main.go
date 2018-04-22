@@ -10,7 +10,7 @@ func squares() func() int {
 	}
 }
 
-func main()  {
+func main() {
 	f := squares()
 
 	for i := 0; i <= 4; i++ {

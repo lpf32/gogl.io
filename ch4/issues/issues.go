@@ -2,12 +2,12 @@ package main
 
 import (
 	"awesomeProject/ch4/github"
-	"os"
-	"log"
 	"fmt"
+	"log"
+	"os"
 )
 
-func main()  {
+func main() {
 	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)

@@ -2,7 +2,7 @@ package scope
 
 import "fmt"
 
-func Print()  {
+func Print() {
 	fmt.Println("hello")
 	fmt.Println(i)
 }

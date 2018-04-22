@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main()  {
+func main() {
 	naturals := make(chan int)
 	squares := make(chan int)
 	wait := make(chan int)
@@ -19,7 +19,7 @@ func main()  {
 
 	go func() {
 		for {
-			x := <- naturals
+			x := <-naturals
 			squares <- x * x
 		}
 	}()
@@ -30,6 +30,6 @@ func main()  {
 		}
 	}()
 
-	<- wait
+	<-wait
 
 }

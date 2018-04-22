@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func change(s string)  {
+func change(s string) {
 	s = "345"
 }
 
-func main()  {
+func main() {
 	s := "123"
 
 	change(s[:])

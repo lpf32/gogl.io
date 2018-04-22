@@ -7,7 +7,7 @@ import (
 
 type Bytecounter int
 
-func (c *Bytecounter) Write(p []byte) (int, error)  {
+func (c *Bytecounter) Write(p []byte) (int, error) {
 	*c += Bytecounter(len(p))
 	return len(p), nil
 }
@@ -29,7 +29,6 @@ func (c *WordCounter) Write(p []byte) (int, error) {
 	*c = WordCounter(count(p, bufio.ScanWords))
 	return len(p), nil
 }
-
 
 type LineCounter int
 

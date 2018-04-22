@@ -1,19 +1,20 @@
 package main
 
 import (
-"fmt"
-"flag"
-"time"
+	"flag"
+	"fmt"
+	"time"
 )
 
-type Rocket struct {}
+type Rocket struct{}
 
-func (r *Rocket) Launch()  {
+func (r *Rocket) Launch() {
 	fmt.Println("hello")
 }
 
 var period = flag.Duration("period", 1*time.Second, "sleep period")
-func main()  {
+
+func main() {
 	flag.Parse()
 	fmt.Printf("Sleeping for %v...", *period)
 	time.Sleep(*period)

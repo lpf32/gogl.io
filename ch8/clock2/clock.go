@@ -1,17 +1,17 @@
 package main
 
 import (
-	"net"
-	"log"
-	"io"
-	"time"
-	"os"
 	"flag"
+	"io"
+	"log"
+	"net"
+	"os"
+	"time"
 )
 
 var port = flag.String("port", "8000", "port number")
 
-func main()  {
+func main() {
 	flag.Parse()
 
 	zone := os.Getenv("TZ")
@@ -19,7 +19,7 @@ func main()  {
 		zone = "Asia/Shanghai"
 	}
 	loc, err := time.LoadLocation(zone)
-	listener, err := net.Listen("tcp", "localhost:" + *port)
+	listener, err := net.Listen("tcp", "localhost:"+*port)
 
 	if err != nil {
 		log.Fatal(err)
@@ -35,7 +35,7 @@ func main()  {
 	}
 }
 
-func handleConn(conn net.Conn, loc *time.Location)  {
+func handleConn(conn net.Conn, loc *time.Location) {
 	defer conn.Close()
 	for {
 

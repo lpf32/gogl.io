@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"golang.org/x/net/html"
 	"os"
-	"fmt"
 )
 
 func visit(links []string, n *html.Node) []string {
@@ -14,13 +14,13 @@ func visit(links []string, n *html.Node) []string {
 			}
 		}
 	}
-	for c := n.FirstChild; c != nil; c = c.NextSibling  {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		links = visit(links, c)
 	}
 	return links
 }
 
-func main()  {
+func main() {
 	doc, err := html.Parse(os.Stdin)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "findlinks1: %v\n", err)

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"time"
-	"text/template"
 	"awesomeProject/ch4/github"
-	"os"
 	"log"
+	"os"
+	"text/template"
+	"time"
 )
 
 const templ = `{{.TotalCount}} issues:
@@ -20,11 +20,11 @@ func daysAgo(t time.Time) int {
 	return int(time.Since(t).Hours() / 24)
 }
 
-var report  = template.Must(template.New("issuelist").
+var report = template.Must(template.New("issuelist").
 	Funcs(template.FuncMap{"daysAgo": daysAgo}).
-		Parse(templ))
+	Parse(templ))
 
-func main()  {
+func main() {
 	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)

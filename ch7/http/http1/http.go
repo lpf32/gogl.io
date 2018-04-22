@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 type dollars float32
@@ -21,7 +21,7 @@ func (db Database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 
 }
 
-func main()  {
+func main() {
 	db := Database{"shoes": 50, "socks": 5}
 
 	log.Fatal(http.ListenAndServe("localhost:8000", db))

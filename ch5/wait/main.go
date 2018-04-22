@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 )
 
-func main()  {
+func main() {
 	res, err := http.Head("https://www.baidu.com")
 	if err != nil {
 		fmt.Println("http head error", err)

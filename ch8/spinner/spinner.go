@@ -1,11 +1,11 @@
 package main
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
-func spinner(delay time.Duration)  {
+func spinner(delay time.Duration) {
 	for {
 		for _, r := range `-\|/` {
 			fmt.Printf("\r%c", r)
@@ -21,7 +21,7 @@ func fib(x int) int {
 	return fib(x-1) + fib(x-2)
 }
 
-func main()  {
+func main() {
 	go spinner(100 * time.Millisecond)
 	const n = 45
 	fibN := fib(n)

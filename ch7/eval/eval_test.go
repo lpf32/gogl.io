@@ -1,15 +1,15 @@
 package eval
 
 import (
-	"testing"
-	"math"
 	"fmt"
+	"math"
+	"testing"
 )
 
-func TestEval(t *testing.T)  {
-	tests := []struct{
+func TestEval(t *testing.T) {
+	tests := []struct {
 		expr string
-		env Env
+		env  Env
 		want string
 	}{
 		{"sqrt(A / pi)", Env{"A": 87616, "pi": math.Pi}, "167"},

@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func main()  {
-	ages := map[string]int {
+func main() {
+	ages := map[string]int{
 		"alice": 31,
-		"john": 34,
+		"john":  34,
 	}
 
 	fmt.Println(ages)

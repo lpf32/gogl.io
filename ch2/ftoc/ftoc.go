@@ -1,11 +1,10 @@
 package main
 
 import (
-	"go-recipes/gopl.io/ch2/scope"
 	"fmt"
+	"go-recipes/gopl.io/ch2/scope"
 	"os"
 )
-
 
 func main() {
 	const freezingF, boilingF = 32.0, 212.0

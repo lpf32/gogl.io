@@ -1,15 +1,15 @@
 package eval
 
 import (
-	"testing"
-	"math"
 	"fmt"
+	"math"
+	"testing"
 )
 
-func TestCoverage(t *testing.T)  {
-	tests := []struct{
+func TestCoverage(t *testing.T) {
+	tests := []struct {
 		expr string
-		env Env
+		env  Env
 		want string
 	}{
 		{"x % 2", nil, "unexpected '%'"},

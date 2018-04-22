@@ -2,9 +2,15 @@ package main
 
 import "fmt"
 
-func main()  {
-	ages := make(map[string]int)
+func main() {
+	ch := make(chan int, 1)
 
-	age, ok := ages["zhang"]
-	fmt.Println(age, ok)
+	//for i := 0; i < 10; i++ {
+	select {
+	case x := <-ch:
+		fmt.Println(x)
+		//case ch <- i:
+		//default:
+	}
+	//}
 }

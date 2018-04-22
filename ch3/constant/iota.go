@@ -9,7 +9,6 @@ const (
 	Monday
 )
 
-
 func main() {
 	fmt.Print(Sunday)
 }

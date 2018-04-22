@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 type dollars float32
@@ -20,7 +20,7 @@ func (db Database) list(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func (db Database) price(w http.ResponseWriter, req *http.Request)  {
+func (db Database) price(w http.ResponseWriter, req *http.Request) {
 	item := req.URL.Query().Get("item")
 	price, ok := db[item]
 	if !ok {
@@ -37,7 +37,7 @@ func (f HandlerFunc) ServerHTTP(w http.ResponseWriter, r *http.Request) {
 	f(w, r)
 }
 
-func main()  {
+func main() {
 	db := Database{"shoes": 50, "socks": 5}
 	http.HandleFunc("/list", db.list)
 	http.HandleFunc("/price", db.price)

@@ -7,11 +7,10 @@ type Point struct {
 }
 
 func (p Point) Distance(q Point) float64 {
-	return math.Hypot(q.X - p.X, q.Y - p.Y)
+	return math.Hypot(q.X-p.X, q.Y-p.Y)
 }
 
-
-func (p *Point) ScaleBy(factor float64)  {
+func (p *Point) ScaleBy(factor float64) {
 	p.X *= factor
 	p.Y *= factor
 }
@@ -34,7 +33,7 @@ func (p Point) InMap(m map[int]int) int {
 
 type Path []Point
 
-func (path Path) Distance () float64 {
+func (path Path) Distance() float64 {
 	sum := 0.0
 	for i := range path {
 		if i > 0 {
@@ -44,7 +43,7 @@ func (path Path) Distance () float64 {
 	return sum
 }
 
-func (path Path) TranslateBy(offset Point, add bool)  {
+func (path Path) TranslateBy(offset Point, add bool) {
 	var op func(q, p Point) Point
 	if add {
 		op = Point.Add
@@ -58,10 +57,10 @@ func (path Path) TranslateBy(offset Point, add bool)  {
 
 type IntList struct {
 	Value int
-	Tail *IntList
+	Tail  *IntList
 }
 
-func (list *IntList) Sum() int  {
+func (list *IntList) Sum() int {
 	if list == nil {
 		return 0
 	}

@@ -1,13 +1,13 @@
 package main
 
 import (
-	"net"
-	"log"
 	"io"
+	"log"
+	"net"
 	"time"
 )
 
-func main()  {
+func main() {
 	listener, err := net.Listen("tcp", "localhost:8000")
 
 	if err != nil {
@@ -25,7 +25,7 @@ func main()  {
 	}
 }
 
-func handleConn(conn net.Conn)  {
+func handleConn(conn net.Conn) {
 	defer conn.Close()
 	for {
 		_, err := io.WriteString(conn, time.Now().Format("15:04:05\n"))
