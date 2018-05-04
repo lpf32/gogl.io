@@ -20,6 +20,7 @@ func main() {
 	}
 	fileSizes := make(chan int64)
 
+	begin := time.Now().UnixNano()
 	go func() {
 		for _, root := range roots {
 			walkDir(root, fileSizes)
@@ -47,6 +48,9 @@ loop:
 			printDiskUsage(nfiles, nbytes)
 		}
 	}
+	end := time.Now().UnixNano()
+	fmt.Printf("used: %d ms\n", (end-begin)/1e6)
+
 	printDiskUsage(nfiles, nbytes)
 }
 

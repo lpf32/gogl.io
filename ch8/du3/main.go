@@ -23,6 +23,8 @@ func main() {
 	fileSizes := make(chan int64)
 	var n sync.WaitGroup
 
+	begin := time.Now().UnixNano()
+
 	for _, root := range roots {
 		n.Add(1)
 		go walkDir(root, fileSizes, &n)
@@ -53,6 +55,8 @@ loop:
 			printDiskUsage(nfiles, nbytes)
 		}
 	}
+	end := time.Now().UnixNano()
+	fmt.Printf("used: %d ms\n", (end-begin)/1e6)
 	printDiskUsage(nfiles, nbytes)
 }
 
@@ -69,8 +73,14 @@ func walkDir(dir string, fileSizes chan<- int64, n *sync.WaitGroup) {
 	}
 }
 
+// sema is a counting semaphore for limiting concurrency in dirents.
+var sema = make(chan struct{}, 20)
+
 // dirents retruns the entries of directory dir.
 func dirents(dir string) []os.FileInfo {
+	sema <- struct{}{} // acquire token
+	defer func() { <-sema }()
+
 	entries, err := ioutil.ReadDir(dir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "du1: %v\n", err)
