@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sync"
 	"time"
 )
 
@@ -18,12 +19,17 @@ func main() {
 	if len(roots) == 0 {
 		roots = []string{"."}
 	}
+
 	fileSizes := make(chan int64)
+	var n sync.WaitGroup
+
+	for _, root := range roots {
+		n.Add(1)
+		go walkDir(root, fileSizes, &n)
+	}
 
 	go func() {
-		for _, root := range roots {
-			walkDir(root, fileSizes)
-		}
+		n.Wait()
 		close(fileSizes)
 	}()
 
@@ -50,17 +56,13 @@ loop:
 	printDiskUsage(nfiles, nbytes)
 }
 
-func printDiskUsage(nfiles, nbytes int64) {
-	fmt.Printf("%d files %.1f GB\n", nfiles, float64(nbytes)/1e9)
-}
-
-// walkDir recursively walks the file tree rooted at dir
-// and sends the size of each found file on fileSizes.
-func walkDir(dir string, fileSizes chan<- int64) {
+func walkDir(dir string, fileSizes chan<- int64, n *sync.WaitGroup) {
+	defer n.Done()
 	for _, entry := range dirents(dir) {
 		if entry.IsDir() {
+			n.Add(1)
 			subdir := filepath.Join(dir, entry.Name())
-			walkDir(subdir, fileSizes)
+			go walkDir(subdir, fileSizes, n)
 		} else {
 			fileSizes <- entry.Size()
 		}
@@ -75,4 +77,8 @@ func dirents(dir string) []os.FileInfo {
 		return nil
 	}
 	return entries
+}
+
+func printDiskUsage(nfiles, nbytes int64) {
+	fmt.Printf("%d files %.1f GB\n", nfiles, float64(nbytes)/1e9)
 }
